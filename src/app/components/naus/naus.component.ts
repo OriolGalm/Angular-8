@@ -8,7 +8,7 @@ import { SwarsService } from 'src/app/swars.service';
 })
 export class NausComponent implements OnInit {
 
-  swarsNaus!:any;
+  swarsNaus:any;
 
   constructor(private readonly swarsSvc: SwarsService) { }
 

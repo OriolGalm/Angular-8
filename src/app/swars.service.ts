@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { map } from 'rxjs';
+import { EMPTY, expand, map, reduce } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +13,9 @@ export class SwarsService {
   getData(){
     return this.http.get(environment.api)
      .pipe(
-      map((x:any) => x?.results)
+      //map((x:any) => x?.results)
+      expand((response: any) => response.next ? this.http.get(response.next) : EMPTY),
+      reduce((acc, current: any) => acc.concat(current.results), [])
     )  
   }
 }

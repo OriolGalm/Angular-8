@@ -1,3 +1,8 @@
 .viewport{
     height: calc(100vh - 16px);
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+::-webkit-scrollbar {
+    display: none;
 }

@@ -6,11 +6,13 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NausComponent } from './components/naus/naus.component';
+import { NavbarComponent } from './shared/navbar/navbar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NausComponent
+    NausComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,

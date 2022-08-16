@@ -6,3 +6,6 @@
 ::-webkit-scrollbar {
     display: none;
 }
+h3,p{
+    color:white
+}

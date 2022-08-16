@@ -7,12 +7,16 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NausComponent } from './components/naus/naus.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
+import { HomeComponent } from './components/home/home.component';
+import { HeaderComponent } from './shared/header/header.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NausComponent,
-    NavbarComponent
+    NavbarComponent,
+    HomeComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

@@ -1,20 +1,28 @@
-<cdk-virtual-scroll-viewport itemSize="200" class="viewport">
-    <div *cdkVirtualFor="let nau of swarsNaus" >
-        <h3>{{ nau.name }}</h3>
-        <p>Model: {{ nau.model }}</p>
-        <p>Manufacturer: {{ nau.manufacturer }}</p>
-        <p>Cost in credits: {{ nau.cost_in_credits }}</p>
-        <p>Length: {{ nau.length }}</p>
-        <p>Max atmosphering speed: {{ nau.max_atmosphering_speed }}</p>
-        <p>Crew: {{ nau.crew }}</p>
-        <p>Passengers: {{ nau.passengers }}</p>
-        <p>Cargo capacity: {{ nau.cargo_capacity }}</p>
-        <p>Consumables: {{ nau.consumables }}</p>
-        <p>Hyperdrive rating: {{ nau.hyperdrive_rating }}</p>
-        <p>MGLT: {{ nau.MGLT }}</p>
-        <p>Starship class: {{ nau.starship_class }}</p>
-        <p>Created: {{ nau.created }}</p>
-        <p>Edited: {{ nau.edited }}</p>
-        <a href="{{ nau.url }}" target="blank">{{ nau.url }}</a>
+<cdk-virtual-scroll-viewport itemSize="120" class="viewport">
+    <div *cdkVirtualFor="let nau of swarsNaus; let i = index" >
+        <h3>
+            <a data-bs-toggle="collapse" [href]="'#collapseExample' + i" role="button" aria-expanded="false" aria-controls="collapseExample">
+                {{ nau.name }}
+            </a>
+        </h3>
+        <div class="collapse" [id]="'collapseExample' + i">
+            <div class="card card-body">
+                <p>Model: {{ nau.model }}</p>
+                <p>Manufacturer: {{ nau.manufacturer }}</p>
+                <p>Cost in credits: {{ nau.cost_in_credits }}</p>
+                <p>Length: {{ nau.length }}</p>
+                <p>Max atmosphering speed: {{ nau.max_atmosphering_speed }}</p>
+                <p>Crew: {{ nau.crew }}</p>
+                <p>Passengers: {{ nau.passengers }}</p>
+                <p>Cargo capacity: {{ nau.cargo_capacity }}</p>
+                <p>Consumables: {{ nau.consumables }}</p>
+                <p>Hyperdrive rating: {{ nau.hyperdrive_rating }}</p>
+                <p>MGLT: {{ nau.MGLT }}</p>
+                <p>Starship class: {{ nau.starship_class }}</p>
+                <p>Created: {{ nau.created }}</p>
+                <p>Edited: {{ nau.edited }}</p>
+                <a href="{{ nau.url }}" target="blank">{{ nau.url }}</a>
+            </div>
+        </div>
     </div>
 </cdk-virtual-scroll-viewport>

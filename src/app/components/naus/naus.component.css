@@ -6,9 +6,17 @@
 ::-webkit-scrollbar {
     display: none;
 }
-h3,p{
+p{
     color:white
 }
-.collapse{
-    background: silver;
+h3{
+    font-size: 2.2rem;
+    color: gold;
+}
+.space{
+    background: black;
+    margin-bottom: 20px;
+}
+a{
+    text-decoration: none;
 }

@@ -1,26 +1,45 @@
 <header>
     <div id="title"></div>
     <div id="logReg">
-        <a data-bs-toggle="modal" data-bs-target="#exampleModal">LOG IN &nbsp;</a>
+        <a data-bs-toggle="modal" data-bs-target="#LogIn">LOG IN &nbsp;</a>
         <span>//&nbsp;&nbsp;</span>
-        <a>SIGN UP</a>
+        <a data-bs-toggle="modal" data-bs-target="#SignUp">SIGN UP</a>
     </div>
 </header>
   
-  <!-- Modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class=" container modal-content">
-        <div class="modal-body">
-          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-          <form>
-            <img src="../../../assets/índex.png">
-            <h3>Enter your email address</h3>
-            <input type="email" name="email" id="email" placeholder="Email Address">
-            <button type="button" id="buttonForm">Continue</button>
-          </form>
-        </div>
+<!-- Modal Log in -->
+<div class="modal fade" id="LogIn" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class=" container modal-content login">
+      <div class="modal-body">
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        <form>
+          <img src="../../../assets/índex.png">
+          <h3>Enter your email address</h3>
+          <input type="email" name="email" class="swForm" placeholder="Email Address">
+          <button type="button" id="buttonForm">Continue</button>
+        </form>
       </div>
     </div>
   </div>
+</div>
   
+<!-- Modal Sign up -->
+<div class="modal fade" id="SignUp" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class=" container modal-content signup">
+      <div class="modal-body">
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        <form>
+          <img src="../../../assets/índex.png">
+          <h3>Create your account</h3>
+          <input type="text" name="firstName" class="swForm" placeholder="First Name">
+          <input type="text" name="lastName" class="swForm" placeholder="Last Name">
+          <input type="email" name="email" class="swForm" placeholder="Email Address">
+          <input type="password" name="pass" class="swForm" placeholder="Password">
+          <button type="button" id="buttonForm">Continue</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

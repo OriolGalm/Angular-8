@@ -35,7 +35,7 @@ span{
 .login{
     border-radius: 0px;
     background: rgba(30,30,30,1);
-    height: 350px;
+    height: 420px;
 }
 .signup{
     border-radius: 0px;
@@ -76,4 +76,8 @@ form>h3{
 }
 #buttonForm:hover{
     background: rgba(80, 120, 160,1);
+}
+.error{
+    color:red;
+    font-size: .8rem;
 }

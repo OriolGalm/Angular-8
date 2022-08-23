@@ -7,17 +7,22 @@
     </div>
 </header>
   
-<!-- Modal Log in -->
+<!-- Modal Log in email -->
 <div class="modal fade" id="LogIn" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class=" container modal-content login">
       <div class="modal-body">
         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-        <form>
+        <form (ngSubmit)="onLogin(loginForm.value)" [formGroup]="loginForm">
           <img src="../../../assets/índex.png">
           <h3>Enter your email address</h3>
-          <input type="email" name="email" class="swForm" placeholder="Email Address">
-          <button type="button" id="buttonForm">Continue</button>
+          <input type="email" name="email" class="swForm" formControlName="emailLogin" placeholder="Email Address">
+          <div *ngIf="loginForm.get('emailLogin')?.touched && loginForm.get('emailLogin')?.errors?.['required']" 
+          class="error">Invalid email</div>
+          <input type="password" name="password" class="swForm" formControlName="passLogin" placeholder="Password">
+          <div *ngIf="loginForm.get('passLogin')?.touched && loginForm.get('passLogin')?.errors?.['required']" 
+          class="error">Invalid password</div>
+          <button type="submit" id="buttonForm">Continue</button>
         </form>
       </div>
     </div>
@@ -30,14 +35,22 @@
     <div class=" container modal-content signup">
       <div class="modal-body">
         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-        <form>
+        <form (ngSubmit)="onSubmit(signupForm.value)" [formGroup]="signupForm">
           <img src="../../../assets/índex.png">
           <h3>Create your account</h3>
-          <input type="text" name="firstName" class="swForm" placeholder="First Name">
-          <input type="text" name="lastName" class="swForm" placeholder="Last Name">
-          <input type="email" name="email" class="swForm" placeholder="Email Address">
-          <input type="password" name="pass" class="swForm" placeholder="Password">
-          <button type="button" id="buttonForm">Continue</button>
+          <input type="text" name="firstName" class="swForm" formControlName="firstName" placeholder="First Name">
+          <div *ngIf="signupForm.get('firstName')?.touched && signupForm.get('firstName')?.errors?.['required']" 
+          class="error">Required</div>
+          <input type="text" name="lastName" class="swForm" formControlName="lastName" placeholder="Last Name">
+          <div *ngIf="signupForm.get('lastName')?.touched && signupForm.get('lastName')?.errors?.['required']" 
+          class="error">Required</div>
+          <input type="email" name="email" class="swForm" formControlName="email" placeholder="Email Address">
+          <div *ngIf="signupForm.get('email')?.touched && signupForm.get('email')?.errors?.['email']" 
+          class="error">Invalid email</div>
+          <input type="password" name="pass" class="swForm" formControlName="password" placeholder="Password">
+          <div *ngIf="signupForm.get('password')?.touched && signupForm.get('password')?.errors?.['minlength']" 
+          class="error">Password must have min 6 characters</div>
+          <button type="submit" id="buttonForm">Continue</button>
         </form>
       </div>
     </div>

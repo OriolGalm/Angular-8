@@ -1,10 +1,14 @@
 <header>
-    <div id="title"></div>
-    <div id="logReg">
-        <a data-bs-toggle="modal" data-bs-target="#LogIn">LOG IN &nbsp;</a>
-        <span>//&nbsp;&nbsp;</span>
-        <a data-bs-toggle="modal" data-bs-target="#SignUp">SIGN UP</a>
-    </div>
+  <div id="names">{{ names }}</div>
+  <div id="title"></div>
+  <div id="logReg" *ngIf="validation == false">
+      <a data-bs-toggle="modal" data-bs-target="#LogIn">LOG IN &nbsp;</a>
+      <span>//&nbsp;&nbsp;</span>
+      <a data-bs-toggle="modal" data-bs-target="#SignUp">SIGN UP</a>
+  </div>
+  <div id="logOut">
+    <div *ngIf="validation" (click)="close()">LOG OUT</div>
+  </div>
 </header>
   
 <!-- Modal Log in email -->
@@ -12,7 +16,7 @@
   <div class="modal-dialog modal-dialog-centered">
     <div class=" container modal-content login">
       <div class="modal-body">
-        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button type="button" class="btn-close btn-close-white" #closeButton data-bs-dismiss="modal" aria-label="Close"></button>
         <form (ngSubmit)="onLogin(loginForm.value)" [formGroup]="loginForm">
           <img src="../../../assets/índex.png">
           <h3>Enter your email address</h3>
@@ -22,7 +26,7 @@
           <input type="password" name="password" class="swForm" formControlName="passLogin" placeholder="Password">
           <div *ngIf="loginForm.get('passLogin')?.touched && loginForm.get('passLogin')?.errors?.['required']" 
           class="error">Invalid password</div>
-          <button type="submit" id="buttonForm">Continue</button>
+          <button type="submit" class="buttonForm">Continue</button>
         </form>
       </div>
     </div>
@@ -47,10 +51,14 @@
           <input type="email" name="email" class="swForm" formControlName="email" placeholder="Email Address">
           <div *ngIf="signupForm.get('email')?.touched && signupForm.get('email')?.errors?.['email']" 
           class="error">Invalid email</div>
+          <div *ngIf="signupForm.get('email')?.touched && signupForm.get('email')?.errors?.['required']" 
+          class="error">Required</div>
           <input type="password" name="pass" class="swForm" formControlName="password" placeholder="Password">
           <div *ngIf="signupForm.get('password')?.touched && signupForm.get('password')?.errors?.['minlength']" 
           class="error">Password must have min 6 characters</div>
-          <button type="submit" id="buttonForm">Continue</button>
+          <div *ngIf="signupForm.get('password')?.touched && signupForm.get('password')?.errors?.['required']" 
+          class="error">Required</div>
+          <button type="submit" class="buttonForm" [disabled]="signupForm.invalid" data-bs-dismiss="modal">Continue</button>
         </form>
       </div>
     </div>

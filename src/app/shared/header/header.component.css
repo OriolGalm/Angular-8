@@ -5,11 +5,17 @@ header{
     flex-direction: row;
     margin-bottom: 25px;
 }
+#names{
+    width: 200px;
+    margin: 80px 7% 10px 3%;
+    font-size: 1.4rem;
+    color: darkgray;
+}
 #title{
     background-image: url(../../../assets/sw_logo_stacked-336c62367939.png);
     min-width:200px;
     height: 90px;
-    margin: 15px 20% 0px 40%;
+    margin: 15px 20% 0px 10%;
     background-size: cover;
 }
 #logReg{
@@ -31,6 +37,19 @@ span{
     color: darkgray;
     margin-top: 70px;
     cursor:auto;
+}
+#logOut{
+    display: flex;
+    align-items: center;
+}
+#logOut>div{
+    color:darkgray;
+    margin-top: 70px;
+    cursor: pointer;
+    font-weight: bold;
+}
+#logOut>div:hover{
+    color:white;
 }
 .login{
     border-radius: 0px;
@@ -66,7 +85,7 @@ form>h3{
     padding: 10px;
     font-size: .8rem;
 }
-#buttonForm{
+.buttonForm{
     width: 100%;
     height: 40px;
     margin-top: 20px;

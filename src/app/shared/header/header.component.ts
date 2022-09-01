@@ -1,5 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+
+export interface Contact{
+  firstName: string,
+  lastName:string,
+  email:string,
+  password:string
+}
 
 @Component({
   selector: 'app-header',
@@ -8,38 +15,58 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 })
 export class HeaderComponent implements OnInit {
 
+  @ViewChild("closeButton") closeButton: any;
+
   loginForm!: FormGroup;
   signupForm!: FormGroup;
+  person!:any;
+  data:Contact[] = [];
+  names!: string;
+  validation: boolean = false;
 
   constructor(private readonly fb: FormBuilder) { }
 
   ngOnInit(): void {
     this.loginForm = this.initLogin();
     this.signupForm = this.initForm();
-    this.getLocalStorage();
-    //localStorage.setItem("signupForm", JSON.stringify( this.signupForm ))
+    console.log("Data : ", typeof this.data)
   }
 
-  getLocalStorage(){
-    let person = localStorage.getItem(JSON.parse("userData"));
-    console.log(person)
-  }
-
-  onSubmit(response:any){
-    localStorage.setItem("userData", JSON.stringify( response ))
-    
+  onSubmit(response:Contact){
+    if(localStorage.getItem("userData") === null){
+      this.data.push(response);
+      localStorage.setItem("userData", JSON.stringify( this.data ));
+    }else{
+      this.data = JSON.parse(localStorage.getItem("userData")!);
+      this.data.push({
+        firstName: response.firstName,
+        lastName: response.lastName,
+        email: response.email,
+        password: response.password
+      });
+      localStorage.setItem("userData", JSON.stringify(this.data))
+    }
+    this.signupForm.reset();
   }
 
   onLogin(response:any){
-    /* let email = response.emailLogin;
-    let password = response.passLogin;
-    let userDataEmail = localStorage.getItem(JSON.parse( 'userData.email' ));
-    let userDataPass = localStorage.getItem(JSON.parse( 'userData.password' ));
-    let userDataFirstNanme = localStorage.getItem(JSON.parse( 'userData.firstName' ));
-    let userDataLastName = localStorage.getItem(JSON.parse( 'userData.lastName' ));
-    if(email == userDataEmail && password == userDataPass){
-      alert("Hello " + userDataFirstNanme + userDataLastName);
-    } */
+    this.person = JSON.parse(localStorage.getItem("userData") || "[]");
+    JSON.stringify(this.person); 
+    for(let i = 0; i < this.person.length; i++){
+      if(response.emailLogin == this.person[i].email && response.passLogin == this.person[i].password){
+        this.names = `${this.person[i].firstName} ${this.person[i].lastName}`;
+        this.closeButton.nativeElement.click();
+        this.validation = true;
+      }
+    }
+    if(this.validation == false){
+       alert("Wrong information");
+    }
+  }
+
+  close(){
+    this.validation = false;
+    this.names = "";
   }
 
   initLogin():FormGroup{

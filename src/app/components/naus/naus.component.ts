@@ -15,7 +15,7 @@ export class NausComponent implements OnInit {
   ngOnInit(): void {
     this.swarsSvc.getData()!.subscribe(naus => {
       this.swarsNaus = naus;
-      console.log("Naus: ", naus);
+      //console.log("Naus: ", naus);
     })
   }
 

@@ -1,4 +1,4 @@
 <h2>Welcome to Star Wars website</h2>
 <p>Here you can find all the information about this.</p>
 <p>For example, all the characteristics of each starship tht exists clicking in the next button:</p>
-<button [routerLink]="['/naus']">Starships</button>
+<button [routerLink]="['/naus']" [disabled]="this.swSvc.validation == false">Starships</button>

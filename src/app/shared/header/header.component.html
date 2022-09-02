@@ -1,13 +1,13 @@
 <header>
   <div id="names">{{ names }}</div>
   <div id="title"></div>
-  <div id="logReg" *ngIf="validation == false">
+  <div id="logReg" *ngIf="this.swSvc.validation == false">
       <a data-bs-toggle="modal" data-bs-target="#LogIn">LOG IN &nbsp;</a>
       <span>//&nbsp;&nbsp;</span>
       <a data-bs-toggle="modal" data-bs-target="#SignUp">SIGN UP</a>
   </div>
   <div id="logOut">
-    <div *ngIf="validation" (click)="close()">LOG OUT</div>
+    <div *ngIf="this.swSvc.validation" (click)="close()">LOG OUT</div>
   </div>
 </header>
   

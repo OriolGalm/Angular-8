@@ -1,12 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-
-export interface Contact{
-  firstName: string,
-  lastName:string,
-  email:string,
-  password:string
-}
+import { Router } from '@angular/router';
+import { SwarsService } from 'src/app/swars.service';
+import { Contact } from '../models/contact.interface';
 
 @Component({
   selector: 'app-header',
@@ -20,32 +16,17 @@ export class HeaderComponent implements OnInit {
   loginForm!: FormGroup;
   signupForm!: FormGroup;
   person!:any;
-  data:Contact[] = [];
   names!: string;
-  validation: boolean = false;
 
-  constructor(private readonly fb: FormBuilder) { }
+  constructor(private readonly fb: FormBuilder, public swSvc: SwarsService, private router: Router) { }
 
   ngOnInit(): void {
     this.loginForm = this.initLogin();
     this.signupForm = this.initForm();
-    console.log("Data : ", typeof this.data)
   }
 
   onSubmit(response:Contact){
-    if(localStorage.getItem("userData") === null){
-      this.data.push(response);
-      localStorage.setItem("userData", JSON.stringify( this.data ));
-    }else{
-      this.data = JSON.parse(localStorage.getItem("userData")!);
-      this.data.push({
-        firstName: response.firstName,
-        lastName: response.lastName,
-        email: response.email,
-        password: response.password
-      });
-      localStorage.setItem("userData", JSON.stringify(this.data))
-    }
+    this.swSvc.signUp(response);
     this.signupForm.reset();
   }
 
@@ -56,17 +37,19 @@ export class HeaderComponent implements OnInit {
       if(response.emailLogin == this.person[i].email && response.passLogin == this.person[i].password){
         this.names = `${this.person[i].firstName} ${this.person[i].lastName}`;
         this.closeButton.nativeElement.click();
-        this.validation = true;
+        this.swSvc.validation = true;
+        this.loginForm.reset();
       }
     }
-    if(this.validation == false){
+    if(this.swSvc.validation == false){
        alert("Wrong information");
     }
   }
 
   close(){
-    this.validation = false;
+    this.swSvc.validation = false;
     this.names = "";
+    this.router.navigate(['/']);
   }
 
   initLogin():FormGroup{

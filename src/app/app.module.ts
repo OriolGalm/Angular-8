@@ -10,6 +10,8 @@ import { NavbarComponent } from './shared/navbar/navbar.component';
 import { HomeComponent } from './components/home/home.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { PilotsComponent } from './components/pilots/pilots.component';
+import { DetailsComponent } from './components/details/details.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     NausComponent,
     NavbarComponent,
     HomeComponent,
-    HeaderComponent
+    HeaderComponent,
+    PilotsComponent,
+    DetailsComponent
   ],
   imports: [
     BrowserModule,

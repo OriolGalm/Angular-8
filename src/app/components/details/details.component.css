@@ -1,0 +1,28 @@
+.viewport{
+    height: calc(100vh - 16px);
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+::-webkit-scrollbar {
+    display: none;
+}
+h3{
+    color: gold;
+}
+p{
+    color:white;
+}
+.box{
+    margin-bottom: 200px;
+}
+img{
+    height: 300px;
+    width: 50%;
+    margin: 20px 25%;
+    padding:0px;
+    background-size:cover;
+}
+img:-moz-broken{
+    opacity: 0;
+    height:0px
+  }

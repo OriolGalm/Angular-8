@@ -1,0 +1,33 @@
+<cdk-virtual-scroll-viewport itemSize="180" class="container viewport" minBufferPx="500"
+maxBufferPx="1200">
+<div class="container box">
+    <div *ngIf="nau$ | async as nau" class="row space">
+        <img src="https://starwars-visualguide.com/assets/img/starships/{{ strs }}.jpg">
+        <h3>{{ nau.name }}</h3>
+        <div class="col">
+            <p>Model: {{ nau.model }}</p>
+            <p>Manufacturer: {{ nau.manufacturer }}</p>
+            <p>Cost in credits: {{ nau.cost_in_credits }}</p>
+            <p>Length: {{ nau.length }}</p>
+            <p>Max atmosphering speed: {{ nau.max_atmosphering_speed }}</p>
+            <p>Crew: {{ nau.crew }}</p>
+            <p>Passengers: {{ nau.passengers }}</p>
+            <a id="pilots" routerLink="pilots">Pilots: {{ nau.pilots.length }}</a>
+        </div>
+        <div class="col">
+            <p>Cargo capacity: {{ nau.cargo_capacity }}</p>
+            <p>Consumables: {{ nau.consumables }}</p>
+            <p>Hyperdrive rating: {{ nau.hyperdrive_rating }}</p>
+            <p>MGLT: {{ nau.MGLT }}</p>
+            <p>Starship class: {{ nau.starship_class }}</p>
+            <p>Created: {{ nau.created }}</p>
+            <p>Edited: {{ nau.edited }}</p>
+            <a href="{{ nau.url }}" target="blank">{{ nau.url }}</a>
+        </div>
+    </div>
+    <!-- <div *ngFor="let pilot of pilots">
+        <a href="{{ pilots }}"></a>
+    </div> -->
+    <router-outlet></router-outlet>
+</div>
+</cdk-virtual-scroll-viewport>

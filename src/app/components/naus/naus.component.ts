@@ -13,7 +13,7 @@ export class NausComponent implements OnInit {
   constructor(private readonly swarsSvc: SwarsService) { }
 
   ngOnInit(): void {
-    this.swarsSvc.getData()!.subscribe(naus => {
+    this.swarsSvc.getNaus()!.subscribe(naus => {
       this.swarsNaus = naus;
       //console.log("Naus: ", naus);
     })

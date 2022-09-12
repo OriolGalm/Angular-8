@@ -25,9 +25,9 @@ maxBufferPx="1200">
             <a href="{{ nau.url }}" target="blank">{{ nau.url }}</a>
         </div>
     </div>
-    <!-- <div *ngFor="let pilot of pilots">
-        <a href="{{ pilots }}"></a>
-    </div> -->
+    <div *ngFor="let pilot of pilots; let i = index">
+        <a href="{{ pilot.pilots[i] }}">{{ pilot.pilots[i] }}</a>
+    </div>
     <router-outlet></router-outlet>
 </div>
 </cdk-virtual-scroll-viewport>

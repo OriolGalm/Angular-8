@@ -1,5 +1,3 @@
-<!-- <div *ngIf="pilots$ | async as pilots">
-    <p>{{ pilots.model }} Holaaa</p>
-</div> -->
-
- <div>Prova</div>
+<div *ngFor="let pilot of pilots; let i = index">
+    <a href="{{ pilot }}">{{ pilot }}</a><br>
+</div>

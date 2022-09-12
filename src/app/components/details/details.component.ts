@@ -16,6 +16,7 @@ export class DetailsComponent implements OnInit {
   public imgNau!: any;
   public strs!:any;
   public pilots!:any;
+  public pil!:any;
 
   constructor(private readonly route: ActivatedRoute, 
     private readonly swSvc: SwarsService,
@@ -24,18 +25,17 @@ export class DetailsComponent implements OnInit {
   ngOnInit(): void {
     const urlNau = this.route.snapshot.params['url'];
     this.nau$ = this.http.get(urlNau);
-    this.strs = urlNau.split('/')[5];
-    //this.pilots = this.http.get("https://swapi.dev/api/starships/12")
-    //this.pilots = urlNau+"pilots";
-    //console.log("Pilots: ", this.pilots);   
+    this.strs = urlNau.split('/')[5];   
     this.getPilots().subscribe(data => {this.pilots = data;
-    this.pilots = Array.of(this.pilots);
+    const pilots2 = Array.of(this.pilots);
+    this.pilots = pilots2[0].pilots;
+    //this.http.get(this.pilots).subscribe(res => this.pil = res);
     console.log("Pilots: ", this.pilots);
     })
   }
 
   getPilots(){
-    return this.http.get("https://swapi.dev/api/starships/12")
+    return this.http.get("https://swapi.dev/api/starships/"+this.strs)
     .pipe(
     map(res => this.pilots = res)
     )

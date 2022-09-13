@@ -9,10 +9,8 @@ import { LogsGuard } from './shared/logs.guard';
 const routes: Routes = [
   {path: "", component: HomeComponent, pathMatch: "full"},
   {path: "naus", component: NausComponent, canActivate: [LogsGuard]},
-  {path: "details/:url", component: DetailsComponent, canActivate: [LogsGuard],
-  children: [
-    {path: "pilots", component: PilotsComponent, canActivate: [LogsGuard]},
-  ]}, 
+  {path: "details/:url", component: DetailsComponent, canActivate: [LogsGuard]},
+  {path: "pilots", component: PilotsComponent, canActivate: [LogsGuard]}, 
 ];
 
 @NgModule({

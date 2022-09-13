@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { map, Observable } from 'rxjs';
 
@@ -10,6 +10,8 @@ import { map, Observable } from 'rxjs';
 })
 export class PilotsComponent implements OnInit {
 
+  @Input() valuePilots!:string[];
+
   public nau$!: Observable<any>;
   public imgNau!: any;
   public strs!:any;
@@ -19,19 +21,24 @@ export class PilotsComponent implements OnInit {
 
   ngOnInit(): void {
     /* const urlNau = this.route.snapshot.params['urlPilots'];
-    this.nau$ = this.http.get(urlNau);
-    this.strs = urlNau.split('/')[5]; */   
+    this.nau$ = this.http.get(urlNau);*/
+    //this.strs = this.valuePilots.split('/')[4];   
+    
     /* this.getPilots().subscribe(data => {this.pilots = data;
     const pilots2 = Array.of(this.pilots);
     this.pilots = pilots2[0].pilots;
     }) */
+
   }
 
-  getPilots(){
-    return this.http.get("https://swapi.dev/api/starships/5")
-    .pipe(
-    map(res => this.pilots = res)
+  getPilots():any{
+    for(let i = 0; i < this.valuePilots.length; i++){
+      return this.http.get(this.valuePilots[i])
+      .pipe(
+      map(res => this.pilots = res)
     )
+    }
+    
   }
 
 }

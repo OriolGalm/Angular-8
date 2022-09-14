@@ -1,0 +1,12 @@
+h3{
+    color:gold;
+}
+p{
+    color:white
+}
+.boxPilots{
+    float:left;
+    width: 46%;
+    padding:2%;
+    margin-bottom: 120px;
+}

@@ -7,7 +7,8 @@ import { PilotsComponent } from './components/pilots/pilots.component';
 import { LogsGuard } from './shared/logs.guard';
 
 const routes: Routes = [
-  {path: "", component: HomeComponent, pathMatch: "full"},
+  {path: "", redirectTo:"/home", pathMatch: "full"},
+  {path: "home", component: HomeComponent},
   {path: "naus", component: NausComponent, canActivate: [LogsGuard]},
   {path: "details/:url", component: DetailsComponent, canActivate: [LogsGuard]},
   {path: "pilots", component: PilotsComponent, canActivate: [LogsGuard]}, 

@@ -1,3 +1,12 @@
-<div >
-   <p></p>
+<div *ngFor="let pilot of valuePilots; let i = index">
+   <div class="boxPilots">
+      <h3>{{ pilot.name }}</h3>
+      <p>Height: {{ pilot.height }}</p>
+      <p>Mass: {{ pilot.height }}</p>
+      <p>Hair color: {{ pilot.hair_color }}</p>
+      <p>Skin color: {{ pilot.skin_color }}</p>
+      <p>Eye color: {{ pilot.eye_color }}</p>
+      <p>Birth year: {{ pilot.birth_year }}</p>
+      <p>Gender: {{ pilot.gender }}</p>
+   </div>
 </div>

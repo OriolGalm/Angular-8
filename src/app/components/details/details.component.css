@@ -26,3 +26,7 @@ img:-moz-broken{
     opacity: 0;
     height:0px
   }
+  .space{
+    border-bottom: 1px solid white;
+    margin-bottom: 40px;
+  }

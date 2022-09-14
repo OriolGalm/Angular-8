@@ -3,7 +3,6 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { SwarsService } from 'src/app/swars.service';
-import { map } from 'rxjs';
 
 @Component({
   selector: 'app-details',
@@ -28,7 +27,6 @@ export class DetailsComponent implements OnInit {
     this.nau$ = this.http.get(urlNau);
     this.strs = urlNau.split('/')[5];   
     this.getPilots();
-    //console.log("PilotsInfo2: ", this.pilotsInfo2);
   }
 
   getPilots(){
@@ -36,7 +34,6 @@ export class DetailsComponent implements OnInit {
     .subscribe(data => {this.pilots = data;
       const pilots2 = Array.of(this.pilots);
       this.pilots = pilots2[0].pilots;
-      //console.log("Pilots: ", this.pilots);
       
       for(let i = 0; i < this.pilots.length; i++){
         this.getPilotsInfo(i);
@@ -48,7 +45,6 @@ export class DetailsComponent implements OnInit {
         return this.http.get(this.pilots[index])
         .subscribe((x:any) => {this.pilotsInfo = x;
           this.pilotsInfo2.push(this.pilotsInfo);
-        //console.log("Pilots Nom: ", this.pilotsInfo);
         })
   }
 

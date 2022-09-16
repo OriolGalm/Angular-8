@@ -4,9 +4,33 @@ h3{
 p{
     color:white
 }
-.boxPilots{
-    float:left;
-    width: 46%;
-    padding:2%;
-    margin-bottom: 120px;
+@media(min-width:768px){
+    .boxPilots{
+        float:left;
+        width: 49%;
+        padding-right:1%;
+        margin-bottom: 130px;
+    }
+}
+@media(max-width:768px){
+    .boxPilots{
+        margin-bottom: 10px;
+    }
+}
+.imgDiv{
+    padding: 0px;
+}
+img{
+    width: 98%;
+    padding: 0px 2% 0px 0px;
+    object-fit: contain;
+}
+h4{
+    color:white;
+    cursor: pointer;
+    transition: all .1s;
+    width: 130px;
+}
+h4:hover{
+    color:gold
 }

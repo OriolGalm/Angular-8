@@ -38,6 +38,7 @@ export class DetailsComponent implements OnInit {
       for(let i = 0; i < this.pilots.length; i++){
         this.getPilotsInfo(i);
       }
+      //console.log("Pilots :", this.pilots);
     })
   }
 

@@ -29,6 +29,10 @@ export class DetailsComponent implements OnInit {
     this.getPilots();
   }
 
+  handleMissingImage(event: Event) {
+    (event.target as HTMLImageElement).style.display = 'none';
+  }  
+
   getPilots(){
     return this.http.get("https://swapi.dev/api/starships/"+this.strs)
     .subscribe(data => {this.pilots = data;

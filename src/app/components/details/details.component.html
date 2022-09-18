@@ -2,9 +2,10 @@
 maxBufferPx="1200">
 <div class="container box">
     <div *ngIf="nau$ | async as nau" class="row space">
-        <img src="https://starwars-visualguide.com/assets/img/starships/{{ strs }}.jpg">
+        <img src="https://starwars-visualguide.com/assets/img/starships/{{ strs }}.jpg" 
+        (error)="handleMissingImage($event)" alt="{{ nau.name }}">
         <h3>{{ nau.name }}</h3>
-        <div class="col">
+        <div class="col pr-0">
             <p>Model: {{ nau.model }}</p>
             <p>Manufacturer: {{ nau.manufacturer }}</p>
             <p>Cost in credits: {{ nau.cost_in_credits }}</p>

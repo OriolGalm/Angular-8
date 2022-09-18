@@ -27,6 +27,7 @@ export class HeaderComponent implements OnInit {
 
   onSubmit(response:Contact){
     this.swSvc.signUp(response);
+    this.names = this.swSvc.namesSvc;
     this.signupForm.reset();
   }
 

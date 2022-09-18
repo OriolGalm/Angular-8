@@ -11,7 +11,7 @@ export class SwarsService {
 
   public validation: boolean = false;
   data:Contact[] = [];
-  person!:any;
+  namesSvc!:any;
 
   constructor(private readonly http: HttpClient) { }
 
@@ -28,10 +28,6 @@ export class SwarsService {
     return this.http.get(environment.api+url);
   }
 
-  getPilots(){
-    //return this.http.get()
-  }
-
   signUp(response:Contact){
     if(localStorage.getItem("userData") === null){
       this.data.push(response);
@@ -44,7 +40,9 @@ export class SwarsService {
         email: response.email,
         password: response.password
       });
-      localStorage.setItem("userData", JSON.stringify(this.data))
+      localStorage.setItem("userData", JSON.stringify(this.data));
+      this.namesSvc = `${response.firstName} ${response.lastName}`;
+      this.validation = true;
     }
   }
 }

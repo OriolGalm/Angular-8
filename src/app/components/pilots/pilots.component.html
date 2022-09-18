@@ -1,7 +1,7 @@
-<h4 (click)="getPilots()">{{ pTemp }}</h4>
+<h4 (click)="getPilots()" *ngIf="valuePilots.length != 0">{{ pTemp }}</h4>
 <div *ngFor="let pilot of valuePilots; let i = index" class="container-fluid">
    <div class="boxPilots row col-md-6" *ngIf="showPilots == true" >
-      <div class="col">
+      <div class="col p-0">
          <h3>{{ pilot.name }}</h3>
          <p>Height: {{ pilot.height }}</p>
          <p>Mass: {{ pilot.height }}</p>
@@ -12,7 +12,7 @@
          <p>Gender: {{ pilot.gender }}</p>
       </div>
       <div class="col imgDiv">
-         <img src="{{ urlImg[i] }}">
+         <img src="{{ urlImg[i] }}" alt="{{ pilot.name }}">
       </div>
    </div>
 </div>

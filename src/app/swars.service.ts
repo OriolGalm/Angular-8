@@ -20,15 +20,12 @@ export class SwarsService {
     return this.http.get(environment.api+"?page=")
      .pipe(
       map((x:any) => x?.results)
-      /* expand((response: any) => response.next ? this.http.get(response.next) : EMPTY),
-      reduce((acc, current: any) => acc.concat(current.results), []) */
     )  
   }
 
   getAllNaus(){
     return this.http.get(environment.api+ `?page=2`)
      .pipe(
-      //map((x:any) => x?.results)
       expand((response: any) => response.next ? this.http.get(response.next) : EMPTY),
       reduce((acc, current: any) => acc.concat(current.results), [])
     )  

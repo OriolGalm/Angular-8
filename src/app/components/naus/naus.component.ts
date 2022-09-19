@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { SwarsService } from 'src/app/swars.service';
 
 @Component({
@@ -6,7 +6,7 @@ import { SwarsService } from 'src/app/swars.service';
   templateUrl: './naus.component.html',
   styleUrls: ['./naus.component.css']
 })
-export class NausComponent implements OnInit {
+export class NausComponent implements OnInit, AfterViewInit {
 
   swarsNaus:any;
   swarsNausTotal:any;
@@ -16,12 +16,10 @@ export class NausComponent implements OnInit {
   ngOnInit(): void {
     this.swarsSvc.getNaus()!.subscribe(naus => {
       this.swarsNaus = naus;
-      //console.log("Naus: ", naus);
     })
-    this.nextPage();
   }
 
-  nextPage(){
+  ngAfterViewInit(){
     this.swarsSvc.getAllNaus()
     .subscribe(t => this.swarsNausTotal = t)
   }

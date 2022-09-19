@@ -1,4 +1,4 @@
-<cdk-virtual-scroll-viewport [itemSize]="300" class="container viewport" minBufferPx="200"
+<cdk-virtual-scroll-viewport [itemSize]="200" class="container viewport" minBufferPx="200"
 maxBufferPx="400">
     <div *ngFor="let nau of swarsNaus" class="row mt-4 space">
         <div [routerLink]="['/details', nau.url]">

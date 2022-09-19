@@ -1,9 +1,17 @@
-<cdk-virtual-scroll-viewport [itemSize]="120" class="container viewport" minBufferPx="200"
+<cdk-virtual-scroll-viewport [itemSize]="300" class="container viewport" minBufferPx="200"
 maxBufferPx="400">
-    <div *cdkVirtualFor="let nau of swarsNaus" class="row mt-4 space">
+    <div *ngFor="let nau of swarsNaus" class="row mt-4 space">
         <div [routerLink]="['/details', nau.url]">
             <h3>{{ nau.name }}</h3>
             <p>Model: {{ nau.model }}</p>
         </div>
     </div>
+    <!-- <div (click)="nextPage()" id="next">Next Page</div> -->
+    <div *ngFor="let nau of swarsNausTotal" class="row mt-4 space">
+        <div [routerLink]="['/details', nau.url]">
+            <h3>{{ nau.name }}</h3>
+            <p>Model: {{ nau.model }}</p>
+        </div>
+    </div>
+    <div (click)="nextPage()" id="next">Next Page</div>
 </cdk-virtual-scroll-viewport>

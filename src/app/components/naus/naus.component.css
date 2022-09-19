@@ -38,3 +38,8 @@ a{
 #pilots{
     cursor: pointer;
 }
+#next{
+    margin-bottom: 200px;
+    color: white;
+    cursor: pointer;
+}

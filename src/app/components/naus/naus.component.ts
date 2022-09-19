@@ -9,6 +9,7 @@ import { SwarsService } from 'src/app/swars.service';
 export class NausComponent implements OnInit {
 
   swarsNaus:any;
+  swarsNausTotal:any;
 
   constructor(private readonly swarsSvc: SwarsService) { }
 
@@ -17,6 +18,12 @@ export class NausComponent implements OnInit {
       this.swarsNaus = naus;
       //console.log("Naus: ", naus);
     })
+    this.nextPage();
+  }
+
+  nextPage(){
+    this.swarsSvc.getAllNaus()
+    .subscribe(t => this.swarsNausTotal = t)
   }
 
 }

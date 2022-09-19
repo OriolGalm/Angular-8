@@ -12,11 +12,21 @@ export class SwarsService {
   public validation: boolean = false;
   data:Contact[] = [];
   namesSvc!:any;
+  cont:number = 1;
 
   constructor(private readonly http: HttpClient) { }
 
   getNaus(){
     return this.http.get(environment.api+"?page=")
+     .pipe(
+      map((x:any) => x?.results)
+      /* expand((response: any) => response.next ? this.http.get(response.next) : EMPTY),
+      reduce((acc, current: any) => acc.concat(current.results), []) */
+    )  
+  }
+
+  getAllNaus(){
+    return this.http.get(environment.api+ `?page=2`)
      .pipe(
       //map((x:any) => x?.results)
       expand((response: any) => response.next ? this.http.get(response.next) : EMPTY),
@@ -41,8 +51,6 @@ export class SwarsService {
         password: response.password
       });
       localStorage.setItem("userData", JSON.stringify(this.data));
-      this.namesSvc = `${response.firstName} ${response.lastName}`;
-      this.validation = true;
     }
   }
 }
